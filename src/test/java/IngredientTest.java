@@ -28,7 +28,7 @@ public class IngredientTest {
 
     @Test
     public void getTypeFILLINGReturnTypeFILLING() {
-        Ingredient ingredient = new Ingredient(FILLING,"Соус Spicy-X",90);
+        Ingredient ingredient = new Ingredient(FILLING,"Мясо бессмертных моллюсков Protostomia",1337);
         Assert.assertEquals(FILLING, ingredient.getType());
     }
 

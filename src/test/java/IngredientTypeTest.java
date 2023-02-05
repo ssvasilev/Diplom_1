@@ -1,18 +1,29 @@
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import praktikum.IngredientType;
-
+@RunWith(Parameterized.class)
 public class IngredientTypeTest {
 
-    public IngredientType type;
+    private final String type;
+
+    public IngredientTypeTest(String type) {
+        this.type = type;
+    }
+
+    @Parameterized.Parameters
+    public static Object[][] getTestData() {
+        return new Object[][]{
+                {"SAUCE"},
+                {"FILLING"},
+        };
+    }
 
     @Test
     public void ingredientTypeHaveSAUCE(){
-            Assert.assertEquals("SAUCE", IngredientType.valueOf("SAUCE").toString());
+        Assert.assertEquals(type, IngredientType.valueOf(type).toString());
     }
 
-    @Test
-    public void ingredientTypeHaveFILLING(){
-        Assert.assertEquals("FILLING", IngredientType.valueOf("FILLING").toString());
-    }
 }
+
