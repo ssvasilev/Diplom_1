@@ -26,7 +26,7 @@ public class IngredientTest {
     }
 
     @Test
-    public void getTypeReturningredientType() {
+    public void getTypeReturnIngredientType() {
         Ingredient ingredient = new Ingredient(ingredientType,"Соус Spicy-X",90);
         Assert.assertEquals(ingredientType, ingredient.getType());
     }
