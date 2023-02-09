@@ -1,21 +1,38 @@
 import org.junit.Assert;
 import org.junit.Test;
 import praktikum.Bun;
+import praktikum.Database;
+
+import java.util.List;
 
 
-public class BunTest {
+public class BunTest extends Database{
+
 
     @Test
     public void getNameReturnName() {
-        Bun bun = new Bun("Флюоресцентная булка R2-D3",988);
-        Assert.assertEquals("Флюоресцентная булка R2-D3", bun.getName());
+        //Инициализируем базу данных
+        Database database = new Database();
+        List<Bun> buns = database.availableBuns();
+        //Создаём эталонную булку из базы данных
+        Bun testBun = buns.get(0);
+        //Создаём тестовую булку через класс
+        Bun bun = new Bun(testBun.name,testBun.price);
+        //Сверяем, что их имена совпадают
+        Assert.assertEquals(bun.getName(), testBun.name);
 
     }
 
     @Test
     public void getPriceReturnPrice() {
-        Bun bun = new Bun("Флюоресцентная булка R2-D3",988);
-        Assert.assertEquals(988, bun.getPrice(), 0.0);
-
+        //Инициализируем базу данных
+        Database database = new Database();
+        List<Bun> buns = database.availableBuns();
+        //Создаём эталонную булку из базы данных
+        Bun testBun = buns.get(0);
+        //Создаём тестовую булку через класс
+        Bun bun = new Bun(testBun.name,testBun.price);
+        //Сверяем, что их цены совпадают
+        Assert.assertEquals(bun.getPrice(), testBun.price, 0.1);
     }
 }
