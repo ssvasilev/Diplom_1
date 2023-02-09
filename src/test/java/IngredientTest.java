@@ -1,34 +1,57 @@
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mock;
+import praktikum.Bun;
+import praktikum.Database;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
 
+import java.util.List;
 
-public class IngredientTest {
+
+public class IngredientTest  extends Database {
 
 
     @Mock
     IngredientType ingredientType;
 
-
-
     @Test
     public void getNameReturnName() {
-        Ingredient ingredient = new Ingredient(ingredientType,"Соус Spicy-X",90);
-        Assert.assertEquals("Соус Spicy-X", ingredient.getName());
+        //Инициализируем базу данных
+        Database database = new Database();
+        List<Ingredient> ingredients = database.availableIngredients();
+        //Создаём эталонный объект из базы данных
+        Ingredient testIngredient = ingredients.get(0);
+        //Создаём тестовый объект через класс
+        Ingredient ingredient = new Ingredient(testIngredient.type,testIngredient.name,testIngredient.price);
+        //Сверяем, что их имена совпадают
+        Assert.assertEquals(ingredient.getName(), testIngredient.name);
     }
 
     @Test
     public void getPriceReturnPrice() {
-        Ingredient ingredient = new Ingredient(ingredientType,"Соус Spicy-X",90);
-        Assert.assertEquals(90, ingredient.getPrice(),0.1);
+        //Инициализируем базу данных
+        Database database = new Database();
+        List<Ingredient> ingredients = database.availableIngredients();
+        //Создаём эталонный объект из базы данных
+        Ingredient testIngredient = ingredients.get(0);
+        //Создаём тестовый объект через класс
+        Ingredient ingredient = new Ingredient(testIngredient.type,testIngredient.name,testIngredient.price);
+        //Сверяем, что их цены совпадают
+        Assert.assertEquals(ingredient.getPrice(), testIngredient.price, 0.1);
     }
 
     @Test
     public void getTypeReturnIngredientType() {
-        Ingredient ingredient = new Ingredient(ingredientType,"Соус Spicy-X",90);
-        Assert.assertEquals(ingredientType, ingredient.getType());
+        //Инициализируем базу данных
+        Database database = new Database();
+        List<Ingredient> ingredients = database.availableIngredients();
+        //Создаём эталонный объект из базы данных
+        Ingredient testIngredient = ingredients.get(0);
+        //Создаём тестовый объект через класс
+        Ingredient ingredient = new Ingredient(testIngredient.type,testIngredient.name,testIngredient.price);
+        //Сверяем, что их типы совпадают
+        Assert.assertEquals(ingredient.getType(), testIngredient.type);
     }
 
 

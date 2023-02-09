@@ -14,13 +14,12 @@ public class BunTest extends Database{
         //Инициализируем базу данных
         Database database = new Database();
         List<Bun> buns = database.availableBuns();
-        //Создаём эталонную булку из базы данных
+        //Создаём эталонный объект из базы данных
         Bun testBun = buns.get(0);
-        //Создаём тестовую булку через класс
+        //Создаём тестовый объект через класс
         Bun bun = new Bun(testBun.name,testBun.price);
         //Сверяем, что их имена совпадают
         Assert.assertEquals(bun.getName(), testBun.name);
-
     }
 
     @Test
@@ -28,9 +27,9 @@ public class BunTest extends Database{
         //Инициализируем базу данных
         Database database = new Database();
         List<Bun> buns = database.availableBuns();
-        //Создаём эталонную булку из базы данных
+        //Создаём эталонный объект из базы данных
         Bun testBun = buns.get(0);
-        //Создаём тестовую булку через класс
+        //Создаём тестовый объект через класс
         Bun bun = new Bun(testBun.name,testBun.price);
         //Сверяем, что их цены совпадают
         Assert.assertEquals(bun.getPrice(), testBun.price, 0.1);
